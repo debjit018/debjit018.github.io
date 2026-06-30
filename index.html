@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Debjit Das — Software Developer</title>
+<meta name="description" content="Debjit Das — aspiring software developer building small, practical tools." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F7F4;
+    --surface:#FFFFFF;
+    --ink:#14171A;
+    --ink-soft:#565C64;
+    --ink-faint:#8B9097;
+    --accent:#3F6B52;
+    --accent-soft:#E3ECE6;
+    --line:#E2E1DC;
+    --maxw:720px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    background:rgba(247,247,244,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    z-index:10;
+  }
+  nav .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:16px;
+    padding-bottom:16px;
+  }
+  .nav-mark{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--accent);
+  }
+  .nav-links{
+    display:flex;
+    gap:24px;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .nav-links a{
+    text-decoration:none;
+    transition:color .15s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{
+    color:var(--ink);
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:84px 0 56px;
+  }
+  .hero-eyebrow{
+    font-size:13px;
+    color:var(--ink-faint);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+    flex-shrink:0;
+  }
+  h1.name{
+    font-size:clamp(34px, 6vw, 48px);
+    font-weight:600;
+    line-height:1.1;
+  }
+  .role{
+    font-size:17px;
+    color:var(--accent);
+    margin-top:10px;
+    font-weight:500;
+  }
+  .bio{
+    margin-top:22px;
+    max-width:54ch;
+    color:var(--ink-soft);
+    font-size:16px;
+  }
+
+  .stat-strip{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .stat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:6px 10px;
+    border-radius:6px;
+  }
+
+  /* ---------- sections ---------- */
+  section{
+    padding:48px 0;
+    border-top:1px solid var(--line);
+  }
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--accent);
+    margin-bottom:20px;
+    display:block;
+  }
+
+  /* ---------- projects ---------- */
+  .project-list{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .project{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .project:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(20,23,26,0.06);
+    border-color:#D4D9D4;
+  }
+  .project-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .project-hash{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:2px 7px;
+    border-radius:4px;
+  }
+  .project h3{
+    font-size:18px;
+    font-weight:600;
+  }
+  .project-link{
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .project-link:hover, .project-link:focus-visible{
+    color:var(--accent);
+  }
+  .project p{
+    margin:10px 0 14px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .tech-tags{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .tech-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+    padding:3px 8px;
+    border-radius:5px;
+  }
+
+  /* ---------- skills ---------- */
+  .skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .skill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:7px 12px;
+    border-radius:6px;
+    background:var(--surface);
+    border:1px solid var(--line);
+  }
+
+  /* ---------- about ---------- */
+  .about-text{
+    color:var(--ink-soft);
+    max-width:58ch;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Inter', sans-serif;
+    font-size:14.5px;
+    font-weight:500;
+    text-decoration:none;
+    padding:11px 18px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--ink);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .btn:hover, .btn:focus-visible{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#fff;
+    border-color:var(--accent);
+  }
+  .btn-primary:hover{
+    opacity:0.9;
+    color:#fff;
+  }
+  .btn-disabled{
+    opacity:0.45;
+    cursor:not-allowed;
+    position:relative;
+  }
+  .btn-disabled:hover{
+    border-color:var(--line);
+    color:var(--ink);
+  }
+
+  footer{
+    padding:32px 0 56px;
+    color:var(--ink-faint);
+    font-size:12.5px;
+  }
+
+  /* reveal animation */
+  .reveal{
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .project{transition:none;}
+  }
+
+  @media (max-width:560px){
+    .nav-links{gap:14px; font-size:13px;}
+    header.hero{padding:56px 0 40px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="nav-mark">debjit018</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="dot"></span><span class="mono">India</span></div>
+    <h1 class="name">Debjit Das</h1>
+    <div class="role mono">Aspiring Software Developer</div>
+    <p class="bio">I build small, practical tools — file organizers, backup scripts, and peer-to-peer apps that solve problems I actually run into. I like software that respects your data: nothing routed through servers it doesn't need to be.</p>
+
+    <div class="stat-strip">
+      <span class="stat">4 public repos</span>
+      <span class="stat">6 followers</span>
+      <span class="stat">github.com/debjit018</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <span class="section-label">// about</span>
+    <p class="about-text">Currently writing shell scripts and small JavaScript apps to make everyday tech less annoying — organizing media libraries, backing up phones over ADB, and building peer-to-peer tools that don't depend on a server in the middle. Based in India, learning by shipping.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="section-label">// projects</span>
+    <div class="project-list">
+
+      <article class="project reveal">
+        <div class="project-top">
+          <h3>media-organizer-md5</h3>
+          <a class="project-link" href="https://github.com/debjit018/media-organizer-md5" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <p>Organizes images, videos, and audio into year-based folders using EXIF metadata and MD5 checksums to prevent duplicates. Includes dry-run mode, logging, and automatic cleanup.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Shell</span>
+          <span class="tech-tag">EXIF</span>
+          <span class="tech-tag">MD5</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-top">
+          <h3>android-media-backup</h3>
+          <a class="project-link" href="https://github.com/debjit018/android-media-backup" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <p>Backs up images, videos, audio, and PDFs from any Android device to Linux using ADB — works even with a dead screen.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Shell</span>
+          <span class="tech-tag">ADB</span>
+          <span class="tech-tag">Android</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-top">
+          <h3>sync-player-plus</h3>
+          <a class="project-link" href="https://github.com/debjit018/sync-player-plus" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <p>A WebRTC-powered desktop app for synchronized video playback and live chat with friends. Pure peer-to-peer — no video ever leaves your computer, just a shared room ID.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">WebRTC</span>
+          <span class="tech-tag">P2P</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="section-label">// skills</span>
+    <div class="skills">
+      <span class="skill">Shell Scripting</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">WebRTC</span>
+      <span class="skill">Linux</span>
+      <span class="skill">ADB / Android</span>
+      <span class="skill">Git</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <span class="section-label">// contact</span>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:debjitdas8538@gmail.com">Email me</a>
+      <a class="btn" href="https://github.com/debjit018" target="_blank" rel="noopener">GitHub ↗</a>
+      <span class="btn btn-disabled" title="Coming soon">Download Resume</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">debjit018.github.io</span> — built with care.
+  </div>
+</footer>
+
+<script>
+  // subtle reveal-on-scroll for project cards, respects reduced motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const items = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    items.forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
